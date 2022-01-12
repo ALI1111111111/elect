@@ -20,10 +20,7 @@ class ChakController extends Controller
         //
 
 
-        $ars = chak::all();
-        $cand = candidate::all();
 
-        return view('chak\index',['ars'=>$ars,'candidates'=>$cand]);
 
     }
 
@@ -61,7 +58,7 @@ class ChakController extends Controller
         $data->voteget = $request->totalvote;
         $data->save();
 
-        return redirect('/chak');
+        return redirect('/chak/add/show');
 
 
 

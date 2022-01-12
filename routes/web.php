@@ -21,8 +21,8 @@ Route::get('cand',[CandidateController::class,'index']);
 Route::get('cand/add',[CandidateController::class,'create']);
 Route::post('/cand/add/store',[CandidateController::class,'store']);
 
-Route::get('chak',[ChakController::class,'index']);
-Route::get('/',[ChakController::class,'index']);
+Route::get('chak',[ChakController::class,'show']);
+Route::get('/',[ChakController::class,'show']);
 
 Route::get('/chak/add', [ChakController::class, 'create']);
 Route::post('/chak/add/store', [ChakController::class, 'store']);
