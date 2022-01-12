@@ -18,7 +18,7 @@
 <body>
 
     <h1> Select Area </h1>
-    <form method="POST" action="/chak/add/show">
+    <form method="GET" action="/chak/add/show">
         @csrf
 
 
@@ -36,7 +36,7 @@
 
     </form>
     {{-- Area Data --}}
-
+    <a href="/cand/add"> Add Candidate </a>
     <a href="/chak/add"> Add Chak Data </a>
 
     <table>
@@ -44,16 +44,22 @@
             <th> Total Vote </th>
 
             <td>
-
+                @foreach ($chaks as $chk )
+                {{$chk->totalvote}}
+                @endforeach
             </td>
             <th> Total Population </th>
-            <td> </td>
+
+            <td>
+@foreach ($chaks as $chk )
+{{$chk->totpop}}
+@endforeach
+
+            </td>
             <th>UC</th>
             <td>
-                @foreach ($ars as $ucp)
-
-                    {{ $ucp->UC }}
-
+                @foreach ($chaks as $chk )
+                {{$chk->UC}}
                 @endforeach
             </td>
 

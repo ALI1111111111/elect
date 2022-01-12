@@ -76,12 +76,16 @@ class ChakController extends Controller
      * Request $request
      * @return \Illuminate\Http\Response
      */
-    public function show(chak $chak,Request  $request)
+    public function show(Request $request)
     {
         //
+$id = $request->area;
+$ars = chak::all();
+$cand = candidate::all();
+$chak = chak::where('id',$id)->get();
 
-$data = $request->area;
-print($data);
+return view('chak\index',['ars'=>$ars,'candidates'=>$cand,'chaks'=>$chak]);
+
 
 
 
