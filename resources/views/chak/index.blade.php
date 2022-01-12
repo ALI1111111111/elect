@@ -18,12 +18,13 @@
 <body>
 
     <h1> Select Area </h1>
-    <form method="GET" action="/chak/add/show">
+    <form method="GET" action="{{ URL::to('/chak/add/show')}}">
         @csrf
 
 
     <select name="area" id="area">
 
+        <option > Select Area Name* </option>
         @foreach ($ars as $data)
             <option value="{{ $data->id }}">{{ $data->area }}</option>
 
@@ -35,9 +36,16 @@
     <input type="submit" value="Get Data">
 
     </form>
+
+    <h2>Record For-(
+        @foreach ($chaks as $chk )
+        {{$chk->area}}
+        @endforeach)
+    </h2>
+
     {{-- Area Data --}}
-    <a href="/cand/add"> Add Candidate </a>
-    <a href="/chak/add"> Add Chak Data </a>
+    <a href="{{ URL::to('/cand/add')}}"> Add Candidate </a>
+    <a href="{{ URL::to('/chak/add')}}"> Add Chak Data </a>
 
     <table>
         <tr>
@@ -46,6 +54,7 @@
             <td>
                 @foreach ($chaks as $chk )
                 {{$chk->totalvote}}
+
                 @endforeach
             </td>
             <th> Total Population </th>

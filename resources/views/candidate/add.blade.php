@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Add Candidate</title>
 </head>
 <body>
 
 <h1>      Add Candidate</h1>
 
-<form method="POST" action="/cand/add/store">
+<form method="POST" action="{{ URL::to('/cand/add/store')}}">
     @csrf
 <label for="candname"> Add candidate Name*  </label>
 <input type="text" name="candname" id="candname" required ><br>

@@ -12,7 +12,7 @@
 
 
 
-<form method="POST" action="/chak/add/store">
+<form method="POST" action="{{ URL::to('/chak/add/store')}}">
     @csrf
     <label for="area">  Add Area name  </label>
     <input type="text" name="area" id="area">

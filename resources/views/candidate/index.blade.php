@@ -17,7 +17,7 @@
 
     <h1>  Total Candidates  </h1>
 
-    <h3>  <a href="cand/add"> Add Candidate  </a> </h3>
+    <h3>  <a href="{{ URL::to('cand/add')}}"> Add Candidate  </a> </h3>
 
 
 
