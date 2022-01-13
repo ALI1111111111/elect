@@ -56,7 +56,7 @@ Getting 1st Candidate Data
             <th> Total Vote </th>
 
             <td>
-                @foreach ($chaks as $chk )
+                @foreach ($cand1s as $chk )
                 {{$chk->totalvote}}
                 @endforeach
 
@@ -124,7 +124,35 @@ Getting 1st Candidate Data
 
         </tr>
     </form>
+<tr>
+    Getting 1st Candidate Data <br>
+    @foreach($cand1s as $cand1)
+    {{$cand1}}
+    @endforeach
 
+    Getting 2st Candidate Data <br>
+    @foreach($cand2s as $cand2)
+    {{$cand2}}
+    @endforeach
+    Getting 3st Candidate Data <br>
+    @foreach($cand3s as $cand3)
+    {{$cand3}}
+    @endforeach
+    Getting 4st Candidate Data <br>
+
+    @foreach($cand4s as $cand4)
+    {{$cand4}}
+    @endforeach
+
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+
+</tr>
 
 
     </table>

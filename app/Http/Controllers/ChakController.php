@@ -35,7 +35,7 @@ class ChakController extends Controller
 
         $cand = candidate::all();
 
-        return view('chak\add',['candidates'=>$cand]);
+        return view('chak\add', ['candidates' => $cand]);
     }
 
     /**
@@ -49,21 +49,16 @@ class ChakController extends Controller
 
         $data = new chak();
         $data->area = $request->area;
-        $data->totalvote= $request->tvote;
+        $data->totalvote = $request->tvote;
         $data->totpop = $request->tpop;
         $data->UC = $request->UC;
 
         $data->result = $request->year;
-        $data->canid= $request->candid;
+        $data->canid = $request->candid;
         $data->voteget = $request->totalvote;
         $data->save();
 
         return redirect('/chak/add/show');
-
-
-
-
-
     }
 
     /**
@@ -76,40 +71,42 @@ class ChakController extends Controller
     public function show(Request $request)
     {
         //
-$areaid = $request->area;
-$candid1 = $request->candid1;
-$candid2 = $request->candid2;
-$candid3 = $request->candid3;
-$candid4 = $request->candid4;
+        $areaid = $request->area;
+        $candid1 = $request->candid1;
+        $candid2 = $request->candid2;
+        $candid3 = $request->candid3;
+        $candid4 = $request->candid4;
 
-$ars = chak::all();
-$cand = candidate::all();
-$chak = chak::where('id',$areaid)->get();
-$candr1s = $this->cnd($areaid,$candid1);
-$candr2s = $this->cnd($areaid,$candid2);
-$candr3s = $this->cnd($areaid,$candid3);
-$candr4s = $this->cnd($areaid,$candid4);
+        $ars = chak::all();
+        $cand = candidate::all();
+        $chak = chak::where('id', $areaid)->get();
+        $candr1s = chak::where('id', $areaid)
+        ->where('canid',$candid1)
+        ->get();
+
+        $candr2s = chak::where('id', $areaid)
+        ->where('canid',$candid1)
+        ->get(); $candr1s = chak::where('id', $areaid)
+        ->where('canid',$candid2)
+        ->get();
+
+        $candr3s = chak::where('id', $areaid)
+        ->where('canid',$candid3)
+        ->get();
+
+        $candr4s = chak::where('id', $areaid)
+        ->where('canid',$candid4)
+        ->get();
+
+        // $candr1s = $this->cnd( $candid1,$areaid);
 
 
 
-return view('chak\index',['ars'=>$ars,'candidates'=>$cand,'cand1s'=>$candr1s,'cand2s'=>$candr2s,'cand3s'=>$candr3s,'cand4s'=>$candr4s,'chaks'=>$chak]);
+
+        return view('chak\index', ['ars' => $ars, 'candidates' => $cand, 'cand1s' => $candr1s, 'cand2s' => $candr2s, 'cand3s' => $candr3s, 'cand4s' => $candr4s, 'chaks' => $chak]);
     }
 
-    public function cnd($candid,$areaid){
-        $result = candidate::where("candidates.id",$candid)
-        ->join('chaks', 'candidates.id', '=', 'chaks.canid')
-        ->where('chaks.id',$areaid)
-        ->select('candidates.candname as cndname',
-        'chaks.area as are',
-        'chaks.totalvote as tvote',
-        'chaks.Uc as UNC',
-        'chaks.voteget as vtget',
-        'chaks.totpop as pop',
-        'chaks.result as rstime'
-        )->orderby('chaks.result')->get();
 
-        return $result;
-    }
 
     /**
      * Show the form for editing the specified resource.
