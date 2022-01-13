@@ -18,7 +18,7 @@
 <body>
 
     <h1> Select Area </h1>
-    <form method="GET" action="{{ URL::to('/chak/add/show')}}">
+    <form method="GE    <form method="GET" action="{{ URL::to('/chak/add/show')}}">
         @csrf
 
 
@@ -55,9 +55,7 @@
                 @foreach ($chaks as $chk )
                 {{$chk->totalvote}}
 
-                @endforeach
-            </td>
-            <th> Total Population </th>
+          <th> Total Population </th>
 
             <td>
 @foreach ($chaks as $chk )

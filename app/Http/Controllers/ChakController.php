@@ -76,16 +76,39 @@ class ChakController extends Controller
     public function show(Request $request)
     {
         //
-$id = $request->area;
+$areaid = $request->area;
+$candid1 = $request->candid1;
+$candid2 = $request->candid2;
+$candid3 = $request->candid3;
+$candid4 = $request->candid4;
+
 $ars = chak::all();
 $cand = candidate::all();
-$chak = chak::where('id',$id)->get();
+$chak = chak::where('id',$areaid)->get();
+$candr1s = $this->cnd($areaid,$candid1);
+$candr2s = $this->cnd($areaid,$candid2);
+$candr3s = $this->cnd($areaid,$candid3);
+$candr4s = $this->cnd($areaid,$candid4);
 
-return view('chak\index',['ars'=>$ars,'candidates'=>$cand,'chaks'=>$chak]);
 
 
+return view('chak\index',['ars'=>$ars,'candidates'=>$cand,'cand1'=>$candr1s,'cand2'=>$candr2s,'cand3'=>$candr3s,'cand4'=>$candr4s,'chaks'=>$chak]);
+    }
 
+    public function cnd($candid,$areaid){
+        $result = candidate::where("candidates.id",$candid)
+        ->join('chaks', 'candidates.id', '=', 'chaks.canid')
+        ->where('chaks.id',$areaid)
+        ->select('candidates.candname as cndname',
+        'chaks.area as are',
+        'chaks.totalvote as tvote',
+        'chaks.Uc as UNC',
+        'chaks.voteget as vtget',
+        'chaks.totpop as pop',
+        'chaks.result as rstime'
+        )->orderby('chaks.result')->get();
 
+        return $result;
     }
 
     /**
