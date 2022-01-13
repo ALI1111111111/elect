@@ -92,7 +92,7 @@ $candr4s = $this->cnd($areaid,$candid4);
 
 
 
-return view('chak\index',['ars'=>$ars,'candidates'=>$cand,'cand1'=>$candr1s,'cand2'=>$candr2s,'cand3'=>$candr3s,'cand4'=>$candr4s,'chaks'=>$chak]);
+return view('chak\index',['ars'=>$ars,'candidates'=>$cand,'cand1s'=>$candr1s,'cand2s'=>$candr2s,'cand3s'=>$candr3s,'cand4s'=>$candr4s,'chaks'=>$chak]);
     }
 
     public function cnd($candid,$areaid){

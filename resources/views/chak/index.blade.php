@@ -18,7 +18,7 @@
 <body>
 
     <h1> Select Area </h1>
-    <form method="GE    <form method="GET" action="{{ URL::to('/chak/add/show')}}">
+    <form method="GET" action="{{ URL::to('/chak/add/show')}}">
         @csrf
 
 
@@ -35,7 +35,7 @@
 
     <input type="submit" value="Get Data">
 
-    </form>
+
 
     <h2>Record For-(
         @foreach ($chaks as $chk )
@@ -46,7 +46,11 @@
     {{-- Area Data --}}
     <a href="{{ URL::to('/cand/add')}}"> Add Candidate </a>
     <a href="{{ URL::to('/chak/add')}}"> Add Chak Data </a>
+@foreach($cand1s as $cand1)
+Getting 1st Candidate Data
+{{$cand1}}
 
+@endforeach
     <table>
         <tr>
             <th> Total Vote </th>
@@ -54,8 +58,9 @@
             <td>
                 @foreach ($chaks as $chk )
                 {{$chk->totalvote}}
+                @endforeach
 
-          <th> Total Population </th>
+ </th>
 
             <td>
 @foreach ($chaks as $chk )
@@ -77,8 +82,8 @@
         <tr>
 
             <th> Result </th>
-            <th> <select name="candid" id="candid">
-                    <option value=""> Select Candidate </option>
+            <th> <select name="candid1" id="candid1">
+                   <option value=""> Select Candidate </option>
 
                     @foreach ($candidates as $cand)
                         <option value="{{ $cand->id }}"> {{ $cand->candname }} </option>
@@ -86,8 +91,8 @@
                     @endforeach
 
                 </select> </th>
-            <th><select name="candid" id="candid">
-                    <option value=""> Select Candidate </option>
+            <th><select name="candid2" id="candid2">
+                   <option value=""> Select Candidate </option>
 
                     @foreach ($candidates as $cand)
 
@@ -97,8 +102,8 @@
 
                 </select></th>
             <th>Lead</th>
-            <th> <select name="candid" id="candid">
-                    <option value=""> Select Candidate </option>
+            <th> <select name="candid3" id="candid3">
+                   <option value=""> Select Candidate </option>
 
                     @foreach ($candidates as $cand)
                         <option value="{{ $cand->id }}"> {{ $cand->candname }} </option>
@@ -106,7 +111,7 @@
                     @endforeach
 
                 </select> </th>
-            <th><select name="candid" id="candid">
+            <th><select name="candid4" id="candid4">
                     <option value=""> Select Candidate </option>
 
                     @foreach ($candidates as $cand)
@@ -118,8 +123,8 @@
             <th>Lead</th>
 
         </tr>
+    </form>
 
-        {{-- election data --}}
 
 
     </table>
