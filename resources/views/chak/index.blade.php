@@ -56,7 +56,7 @@ Getting 1st Candidate Data
             <th> Total Vote </th>
 
             <td>
-                @foreach ($cand1s as $chk )
+                @foreach ($chaks as $chk )
                 {{$chk->totalvote}}
                 @endforeach
 

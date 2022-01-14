@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChaksTable extends Migration
+class CreateDevelopmentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,11 @@ class CreateChaksTable extends Migration
      */
     public function up()
     {
-        Schema::create('chaks', function (Blueprint $table) {
+        Schema::create('developments', function (Blueprint $table) {
             $table->id();
-            $table->string('area_name')->default('');
-            $table->string('totalvote')->default('');
-            $table->string('totpop')->default('');
-            $table->string('UC')->default('');
+            $table->string('dev_type')->default('');
+            $table->integer('demand_id');
             $table->string('more_info')->default('');
-
-            // $table->integer('canid');
-            // $table->integer('voteget');
-            // $table->integer('result');
-
             $table->timestamps();
         });
     }
@@ -36,6 +29,6 @@ class CreateChaksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chaks');
+        Schema::dropIfExists('developments');
     }
 }
