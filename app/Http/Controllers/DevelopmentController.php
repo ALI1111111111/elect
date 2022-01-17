@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\result;
-use App\Models\chak;
-use App\Models\candidate;
-
+use App\Models\development;
 use Illuminate\Http\Request;
 
-class ResultController extends Controller
+class DevelopmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,10 +25,6 @@ class ResultController extends Controller
     public function create()
     {
         //
-        $ars = chak::all();
-        $cand = candidate::all();
-
-        return view('result\add', ['candidates' => $cand,'ars' => $ars]);
     }
 
     /**
@@ -43,25 +36,15 @@ class ResultController extends Controller
     public function store(Request $request)
     {
         //
-
-        $result = new result();
-        $result->candidate_id = $request->candid;
-        $result->area_id = $request->area;
-        $result->voteget = $request->voteget;
-        $result->year = $request->year;
-        $result->save();
-
-        return redirect('/');
-
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\result  $result
+     * @param  \App\Models\development  $development
      * @return \Illuminate\Http\Response
      */
-    public function show(result $result)
+    public function show(development $development)
     {
         //
     }
@@ -69,10 +52,10 @@ class ResultController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\result  $result
+     * @param  \App\Models\development  $development
      * @return \Illuminate\Http\Response
      */
-    public function edit(result $result)
+    public function edit(development $development)
     {
         //
     }
@@ -81,10 +64,10 @@ class ResultController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\result  $result
+     * @param  \App\Models\development  $development
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, result $result)
+    public function update(Request $request, development $development)
     {
         //
     }
@@ -92,10 +75,10 @@ class ResultController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\result  $result
+     * @param  \App\Models\development  $development
      * @return \Illuminate\Http\Response
      */
-    public function destroy(result $result)
+    public function destroy(development $development)
     {
         //
     }
