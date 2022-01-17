@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\chak;
 use App\Models\candidate;
-
+use App\Models\result;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ChakController extends Controller
 {
@@ -48,17 +49,18 @@ class ChakController extends Controller
     {
 
         $data = new chak();
-        $data->area = $request->area;
+
+        $data->area_name = $request->area;
         $data->totalvote = $request->tvote;
         $data->totpop = $request->tpop;
         $data->UC = $request->UC;
 
-        $data->result = $request->year;
-        $data->canid = $request->candid;
-        $data->voteget = $request->totalvote;
+        // $data->result = $request->year;
+        // $data->canid = $request->candid;
+        // $data->voteget = $request->totalvote;
         $data->save();
 
-        return redirect('/chak/add/show');
+        return redirect('/');
     }
 
     /**
@@ -74,36 +76,77 @@ class ChakController extends Controller
         $areaid = $request->area;
         $candid1 = $request->candid1;
         $candid2 = $request->candid2;
-        $candid3 = $request->candid3;
-        $candid4 = $request->candid4;
+        // $candid3 = $request->candid3;
+        // $candid4 = $request->candid4;
+        if($request->area){
+            $chak = chak::where('id', $areaid)->get();
+            $candr2s = result::join('candidates','results.candidate_id','candidates.id')
+        ->join('chaks','results.area_id','chaks.id')
+        ->where('area_id', $areaid)
+        // >where('candidate_id',$candid1)
+        // ->where('candidate_id',$candid2)
+    ->select('candidates.candname as cname',
+    'chaks.area_name as area_name',
+    'results.*',
+    // DB::raw('(SELECT * from candidates WHERE candidates.id==1) as cand2')
+    )
+    ->orderby('year')
+        ->get();
 
+        }else{
+
+            $chak = chak::all();
+            $candr2s = result::join('candidates','results.candidate_id','candidates.id')
+        ->join('chaks','results.area_id','chaks.id')
+        // ->where('area_id', $areaid)
+        // >where('candidate_id',$candid1)
+        // ->where('candidate_id',$candid2)
+    ->select('candidates.candname as cname',
+    'chaks.area_name as area_name',
+    'results.*',
+    // DB::raw('(SELECT * from candidates WHERE candidates.id==1) as cand2')
+    )
+    ->orderby('year')
+        ->get();
+        }
         $ars = chak::all();
+
         $cand = candidate::all();
-        $chak = chak::where('id', $areaid)->get();
-        $candr1s = chak::where('id', $areaid)
-        ->where('canid',$candid1)
+
+        $candr1s = result::join('candidates','results.candidate_id','candidates.id')
+        ->join('chaks','results.area_id','chaks.id')
+        ->where('area_id', $areaid)
+        ->where('candidate_id','1')
+
+    ->select('candidates.candname as cname',
+    'results.*')
+    ->orderby('year')
+
         ->get();
 
-        $candr2s = chak::where('id', $areaid)
-        ->where('canid',$candid1)
-        ->get(); $candr1s = chak::where('id', $areaid)
-        ->where('canid',$candid2)
-        ->get();
 
-        $candr3s = chak::where('id', $areaid)
-        ->where('canid',$candid3)
-        ->get();
 
-        $candr4s = chak::where('id', $areaid)
-        ->where('canid',$candid4)
-        ->get();
+
+        // $candr3s = chak::where('id', $areaid)
+        // ->where('canid',$candid3)
+        // ->get();
+
+        // $candr4s = chak::where('id', $areaid)
+        // ->where('canid',$candid4)
+        // ->get();
 
         // $candr1s = $this->cnd( $candid1,$areaid);
 
 
 
 
-        return view('chak\index', ['ars' => $ars, 'candidates' => $cand, 'cand1s' => $candr1s, 'cand2s' => $candr2s, 'cand3s' => $candr3s, 'cand4s' => $candr4s, 'chaks' => $chak]);
+        return view('chak\index', ['ars' => $ars,'chaks' => $chak,'candidates' => $cand,
+
+        'cand2s' => $candr2s,
+        'cand1s' => $candr1s,
+        //    'cand3s' => $candr3s, 'cand4s' => $candr4s,
+        ]
+    );
     }
 
 

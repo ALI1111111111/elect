@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ChakController;
+use App\Http\Controllers\ResultController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +23,14 @@ Route::get('cand',[CandidateController::class,'index']);
 Route::get('cand/add',[CandidateController::class,'create']);
 Route::post('/cand/add/store',[CandidateController::class,'store']);
 
+Route::get('result/add',[ResultController::class,'create']);
+Route::post('/result/add/store',[ResultController::class,'store']);
+
+
 Route::get('chak',[ChakController::class,'show']);
 Route::get('/',[ChakController::class,'show']);
 
 Route::get('/chak/add', [ChakController::class, 'create']);
 Route::post('/chak/add/store', [ChakController::class, 'store']);
-Route::get('/chak/add/show', [ChakController::class, 'show']);
+// Route::get('/chak/add/show', [ChakController::class, 'show']);
 

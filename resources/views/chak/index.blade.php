@@ -17,34 +17,102 @@
 
 <body>
 
-    <h1> Select Area </h1>
-    <form method="GET" action="{{ URL::to('/chak/add/show')}}">
+    <h1> Get Area Info </h1>
+    <a href="{{ URL::to('/cand/add')}}"> Add Candidate </a><br>
+     <a href="{{ URL::to('/chak/add')}}"> Add Chak Data </a>
+     <a href="{{ URL::to('result/add')}}"> Add Result Data </a>
+
+    <form method="GET" action="{{ URL::to('/')}}">
         @csrf
 
+        <select name="area" id="area">
 
-    <select name="area" id="area">
+            <option > Select Area Name* </option>
+            @foreach ($ars as $data)
+                <option value="{{ $data->id }}">{{ $data->area_name }}</option>
 
-        <option > Select Area Name* </option>
-        @foreach ($ars as $data)
-            <option value="{{ $data->id }}">{{ $data->area }}</option>
-
-        @endforeach
+            @endforeach
 
 
-    </select>
+        </select>
 
-    <input type="submit" value="Get Data">
+        <input type="submit" value="Get Data">
+
+
+    </form>
+
 
 
 
     <h2>Record For-(
         @foreach ($chaks as $chk )
-        {{$chk->area}}
+        {{$chk->area_name}},
         @endforeach)
     </h2>
 
+    <table>
+<tr>
+<th> Area Name  </th>
+<th> Total Vote </th>
+<th>Total Population</th>
+<th> UC </th>
+
+</tr>
+@foreach ($chaks as $data)
+<tr>
+<td> {{$data->area_name}}   </td>
+<td> {{$data->totalvote}}   </td>
+<td> {{$data->totpop}}   </td>
+<td> {{$data->UC}}    </td>
+
+
+</tr>
+@endforeach
+    </table>
+
+
+<h3> Result table </h3>
+
+<table>
+<tr>
+<th> result </th>
+<th> ARea Name </th>
+<th> Candidate Name  </th>
+<th> vote Get  </th>
+{{-- <th>
+    Riaz Fatyana
+</th>
+<th>  Asad Ul Rehman  </th>
+<th>Lead</th> --}}
+{{-- <th> Nazia Raheel </th>
+<th> Ashfa Riaz </th>
+<th> Lead </th> --}}
+</tr>
+@foreach($cand2s as $cand2)
+
+<tr>
+
+
+    <td> {{$cand2->year}}    </td>
+    <td> {{$cand2->area_name}} </td>
+
+    <td> {{$cand2->cname}} </td>
+    <td>  {{$cand2->voteget}} </td>
+    
+</tr>
+@endforeach
+
+
+
+</table>
+
+
+
+    {{--
+
+
     {{-- Area Data --}}
-    <a href="{{ URL::to('/cand/add')}}"> Add Candidate </a>
+    {{-- <a href="{{ URL::to('/cand/add')}}"> Add Candidate </a>
     <a href="{{ URL::to('/chak/add')}}"> Add Chak Data </a>
 @foreach($cand1s as $cand1)
 Getting 1st Candidate Data
@@ -76,10 +144,10 @@ Getting 1st Candidate Data
             </td>
 
         </tr>
-        <br><br> <br>
+        <br><br> <br> --}}
 
         {{-- election data HEadings --}}
-        <tr>
+        {{-- <tr>
 
             <th> Result </th>
             <th> <select name="candid1" id="candid1">
@@ -155,7 +223,7 @@ Getting 1st Candidate Data
 </tr>
 
 
-    </table>
+    </table> --}}
 </body>
 
 </html>
