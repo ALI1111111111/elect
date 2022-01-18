@@ -27,7 +27,7 @@ class ResultController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
+{
         $ars = chak::all();
         $cand = candidate::all();
 
