@@ -72,35 +72,14 @@
 
 
 <h3> Result table </h3>
-
 <table>
-<tr>
-<th> result </th>
-<th> ARea Name </th>
-<th> Candidate Name  </th>
-<th> vote Get  </th>
-{{-- <th>
-    Riaz Fatyana
-</th>
-<th>  Asad Ul Rehman  </th>
-<th>Lead</th> --}}
-{{-- <th> Nazia Raheel </th>
-<th> Ashfa Riaz </th>
-<th> Lead </th> --}}
-</tr>
-@foreach($cand2s as $cand2)
-
-<tr>
 
 
-    <td> {{$cand2->year}}    </td>
-    <td> {{$cand2->area_name}} </td>
+    <tr>
 
-    <td> {{$cand2->cname}} </td>
-    <td>  {{$cand2->voteget}} </td>
-    
-</tr>
-@endforeach
+        <th> Year </th>
+        <th>  </th>
+    </tr>
 
 
 

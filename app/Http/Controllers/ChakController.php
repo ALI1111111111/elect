@@ -80,49 +80,18 @@ class ChakController extends Controller
         // $candid4 = $request->candid4;
         if($request->area){
             $chak = chak::where('id', $areaid)->get();
-            $candr2s = result::join('candidates','results.candidate_id','candidates.id')
-        ->join('chaks','results.area_id','chaks.id')
-        ->where('area_id', $areaid)
-        // >where('candidate_id',$candid1)
-        // ->where('candidate_id',$candid2)
-    ->select('candidates.candname as cname',
-    'chaks.area_name as area_name',
-    'results.*',
-    // DB::raw('(SELECT * from candidates WHERE candidates.id==1) as cand2')
-    )
-    ->orderby('year')
-        ->get();
+
 
         }else{
 
             $chak = chak::all();
-            $candr2s = result::join('candidates','results.candidate_id','candidates.id')
-        ->join('chaks','results.area_id','chaks.id')
-        // ->where('area_id', $areaid)
-        // >where('candidate_id',$candid1)
-        // ->where('candidate_id',$candid2)
-    ->select('candidates.candname as cname',
-    'chaks.area_name as area_name',
-    'results.*',
-    // DB::raw('(SELECT * from candidates WHERE candidates.id==1) as cand2')
-    )
-    ->orderby('year')
-        ->get();
+
         }
         $ars = chak::all();
 
         $cand = candidate::all();
 
-        $candr1s = result::join('candidates','results.candidate_id','candidates.id')
-        ->join('chaks','results.area_id','chaks.id')
-        ->where('area_id', $areaid)
-        ->where('candidate_id','1')
-
-    ->select('candidates.candname as cname',
-    'results.*')
-    ->orderby('year')
-
-        ->get();
+       
 
 
 
@@ -142,8 +111,8 @@ class ChakController extends Controller
 
         return view('chak\index', ['ars' => $ars,'chaks' => $chak,'candidates' => $cand,
 
-        'cand2s' => $candr2s,
-        'cand1s' => $candr1s,
+        // 'cand2s' => $candr2s,
+        // 'cand1s' => $candr1s,
         //    'cand3s' => $candr3s, 'cand4s' => $candr4s,
         ]
     );

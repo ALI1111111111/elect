@@ -15,9 +15,19 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
-            $table->integer('candidate_id');
+            $table->string('cand1')->default('');
+            $table->string('cand2')->default('');
+            $table->string('cand3')->default('');
+            $table->string('cand4')->default('');
+
+
+            $table->integer('cand1vote');
+            $table->integer('cand2vote');
+            $table->integer('cand3vote');
+            $table->integer('cand4vote');
+
+
             $table->integer('area_id');
-            $table->integer('voteget');
             $table->integer('year');
             $table->string('more_info')->default('');
             $table->timestamps();
