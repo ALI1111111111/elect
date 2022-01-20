@@ -18,8 +18,8 @@
 <body>
 
     <h1> Get Area Info </h1>
-    <a href="{{ URL::to('/cand/add')}}"> Add Candidate </a><br>
-     <a href="{{ URL::to('/chak/add')}}"> Add Chak Data </a>
+    {{-- <a href="{{ URL::to('/cand/add')}}"> Add Candidate </a><br> --}}
+     <a href="{{ URL::to('/chak/add')}}"> Add Chak Data </a><br>
      <a href="{{ URL::to('result/add')}}"> Add Result Data </a>
 
     <form method="GET" action="{{ URL::to('/')}}">
@@ -76,11 +76,30 @@
 
 
     <tr>
-
+{{-- <th> Area Name</th> --}}
         <th> Year </th>
-        <th>  </th>
+        <th> Riaz Fatyana</th>
+        <th> Asad-UL-Rehman </th>
+        <th> Lead </th>
+        <th>Nazia-Raheel</th>
+        <th>Ashfa Riaz</th>
+        <th> Lead </th>
+    </tr>
+    @foreach ($results as  $result)
+
+    <tr>
+{{-- <td>  {{$results->area_name}} </td> --}}
+        <td> {{ $result->year }}   </td>
+        <td> {{ $result->cand1vote }}   </td>
+        <td> {{ $result->cand2vote }}   </td>
+        <td> {{ $result->cand1vote - $result->cand2vote }}    </td>
+        <td> {{ $result->cand3vote }}   </td>
+        <td> {{ $result->cand4vote }}   </td>
+        <td> {{ $result->cand3vote - $result->cand4vote }}    </td>
+
     </tr>
 
+    @endforeach
 
 
 </table>

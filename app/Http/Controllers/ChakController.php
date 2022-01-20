@@ -80,18 +80,28 @@ class ChakController extends Controller
         // $candid4 = $request->candid4;
         if($request->area){
             $chak = chak::where('id', $areaid)->get();
+$results = result::join('chaks','chaks.id','results.area_id')
+->where('area_id',$areaid)
+->select('results.*','chaks.area_name as area_name')
 
+->orderby('year')
+->get();
 
         }else{
 
             $chak = chak::all();
+
+$results =result::join('chaks','chaks.id','results.area_id')
+->select('results.*','chaks.area_name as area_name')
+->orderby('year')
+->all();
 
         }
         $ars = chak::all();
 
         $cand = candidate::all();
 
-       
+
 
 
 
@@ -109,7 +119,7 @@ class ChakController extends Controller
 
 
 
-        return view('chak\index', ['ars' => $ars,'chaks' => $chak,'candidates' => $cand,
+        return view('chak\index', ['ars' => $ars,'chaks' => $chak,'candidates' => $cand,'results'=>$results
 
         // 'cand2s' => $candr2s,
         // 'cand1s' => $candr1s,

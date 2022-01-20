@@ -47,9 +47,18 @@ class ResultController extends Controller
 
 
         $result = new result();
-        $result->candidate_id = $request->candid;
+        $result->cand1= $request->candid1;
+        $result->cand2= $request->candid2;
+        $result->cand3= $request->candid3;
+        $result->cand4= $request->candid4;
+
+        $result->cand1vote= $request->cand2vote;
+        $result->cand2vote= $request->cand2vote;
+        $result->cand3vote= $request->cand3vote;
+        $result->cand4vote= $request->cand4vote;
+
+
         $result->area_id = $request->area;
-        $result->voteget = $request->voteget;
         $result->year = $request->year;
         $result->save();
 
