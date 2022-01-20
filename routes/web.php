@@ -24,7 +24,13 @@ Route::get('cand/add',[CandidateController::class,'create']);
 Route::post('/cand/add/store',[CandidateController::class,'store']);
 
 Route::get('result/add',[ResultController::class,'create']);
+Route::get('result/edit/{id}',[ResultController::class,'edit']);
+
+Route::get('result/delete/{id}',[ResultController::class,'destroy']);
+
 Route::post('/result/add/store',[ResultController::class,'store']);
+Route::post('/result/update',[ResultController::class,'update']);
+
 
 
 Route::get('chak',[ChakController::class,'show']);

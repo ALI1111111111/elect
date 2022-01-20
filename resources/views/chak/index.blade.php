@@ -84,6 +84,7 @@
         <th>Nazia-Raheel</th>
         <th>Ashfa Riaz</th>
         <th> Lead </th>
+        <th>action</th>
     </tr>
     @foreach ($results as  $result)
 
@@ -96,6 +97,8 @@
         <td> {{ $result->cand3vote }}   </td>
         <td> {{ $result->cand4vote }}   </td>
         <td> {{ $result->cand3vote - $result->cand4vote }}    </td>
+        <td>  <a href={{"result/edit/".$result->id}}> Edit </a>......
+  <a href={{"result/delete/".$result->id}}> Delete </a></td>
 
     </tr>
 
