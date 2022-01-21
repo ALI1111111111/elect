@@ -7,6 +7,7 @@
     <title>Add chak Data</title>
 </head>
 <body>
+    @include('chak.header')
 
 <h1>  Add Chak Data Here  </h1>
 

@@ -13,6 +13,7 @@
         </style>
 </head>
 <body>
+    @include('chak.header')
 
 
     <h1>  Total Candidates  </h1>

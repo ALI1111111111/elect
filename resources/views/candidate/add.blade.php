@@ -7,6 +7,7 @@
     <title>Add Candidate</title>
 </head>
 <body>
+    @include('chak.header')
 
 <h1>      Add Candidate</h1>
 

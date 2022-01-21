@@ -16,6 +16,7 @@ th,td{
 
 </head>
 <body>
+    @include('chak.header')
 
 <h1>  Add Result Data Here  </h1>
 
