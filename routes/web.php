@@ -3,6 +3,8 @@
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\ChakController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\ArdController;
+
 
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +33,8 @@ Route::get('result/delete/{id}',[ResultController::class,'destroy']);
 Route::post('/result/add/store',[ResultController::class,'store']);
 Route::post('/result/update',[ResultController::class,'update']);
 
+Route::get('/ard/val',[ArdController::class,'index']);
+Route::post('/ard/btn',[ArdController::class,'store']);
 
 
 Route::get('chak',[ChakController::class,'show']);
