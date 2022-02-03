@@ -54,7 +54,7 @@
         @endforeach)
     </h2>
 
-    <table>
+    <table class="table table-striped">
 <tr>
 <th> Area Name  </th>
 <th> Total Vote </th>
@@ -76,7 +76,7 @@
 
 
 <h3> Result table </h3>
-<table>
+<table class="table table-striped">
 
 
     <tr>
