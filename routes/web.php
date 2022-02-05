@@ -36,6 +36,8 @@ Route::post('/result/update',[ResultController::class,'update']);
 Route::get('/ard/val',[ArdController::class,'index']);
 Route::post('/ard/btn',[ArdController::class,'store']);
 
+Route::get('/ard',[ArdController::class,'show']);
+
 
 Route::get('chak',[ChakController::class,'show']);
 Route::get('/',[ChakController::class,'show']);

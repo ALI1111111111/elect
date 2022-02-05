@@ -57,6 +57,9 @@ return redirect('/ard/val');
     public function show(ard $ard)
     {
         //
+        $data = ard::where('id','1')
+        ->select('value')->get();
+        return $data;
     }
 
     /**
