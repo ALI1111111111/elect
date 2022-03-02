@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Response;
 use App\Models\ard;
 use Illuminate\Http\Request;
 
@@ -42,7 +42,7 @@ class ArdController extends Controller
 
 
         $data = ard::find(1);
-        $data->value = $request->On;
+        $data->time = $request->On;
         $data->save();
 
 return redirect('/ard/val');
@@ -57,9 +57,8 @@ return redirect('/ard/val');
     public function show(ard $ard)
     {
         //
-        $data = ard::where('id','1')
-        ->select('value')->get();
-        return $data;
+        $val = ard::all();
+        return view('arduino.show',['values'=> $val]);
     }
 
     /**

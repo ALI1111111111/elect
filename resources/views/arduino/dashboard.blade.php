@@ -1,7 +1,7 @@
 <h1> working </h1>
 @foreach ($values as $val )
 
-<h2> Now Led Light is  {{$val->value}} </h2>
+<h2> Now Led Light is  {{$val->time}} </h2>
 @endforeach
 <form action="{{ URL::to('/ard/btn')}}" method="POST">
     @csrf
