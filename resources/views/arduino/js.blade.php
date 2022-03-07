@@ -9,11 +9,27 @@
 </head>
 <body>
     
-    <button id="led1" onclick="changeText(this)"> Wait Util Data Come </button>
+    <button id="led1" onclick="sendval(this)"> Wait Util Data Come </button>
+    <button id="sendval" name="On"  > change </button>
     <script>
         $(document).ready(function(){
             getval();
             setInterval(getval,7000);
+
+            sendval();
+
+function sendval(){
+    $("sendval").click(function(){
+  $.post("http://192.168.10.8/elect/public/ard/btn",
+  {
+    name: "On",
+   
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+});
+}
 
           function getval(){
             $.get("http://192.168.10.8/elect/public/ard/1", function(data, status){
