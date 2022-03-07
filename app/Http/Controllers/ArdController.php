@@ -16,7 +16,7 @@ class ArdController extends Controller
     {
         //
 
-        $val = ard::all();
+        $val = ard::where('id',1)->get();
         return view('arduino.dashboard',['values'=> $val]);
     }
 
@@ -42,7 +42,8 @@ class ArdController extends Controller
 
 
         $data = ard::find(1);
-        $data->time = $request->On;
+        // $data = new ard();
+        $data->value = $request->On;
         $data->save();
 
 return redirect('/ard/val');
@@ -54,10 +55,10 @@ return redirect('/ard/val');
      * @param  \App\Models\ard  $ard
      * @return \Illuminate\Http\Response
      */
-    public function show(ard $ard)
+    public function show(ard $ard,$id)
     {
         //
-        $val = ard::all();
+        $val = ard::where('id',$id)->get();
         return view('arduino.show',['values'=> $val]);
     }
 

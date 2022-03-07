@@ -1,5 +1,6 @@
 {{-- {{$data->time}} --}}
 @foreach ($values as $val )
 
-  {{$val->time}}
+  {{$val->value}}
 @endforeach
+

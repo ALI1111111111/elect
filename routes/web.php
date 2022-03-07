@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::view('/test','arduino\js');
 
 Route::get('cand',[CandidateController::class,'index']);
 Route::get('cand/add',[CandidateController::class,'create']);
@@ -36,7 +36,7 @@ Route::post('/result/update',[ResultController::class,'update']);
 Route::get('/ard/val',[ArdController::class,'index']);
 Route::post('/ard/btn',[ArdController::class,'store']);
 
-Route::get('/ard',[ArdController::class,'show']);
+Route::get('/ard/{id}',[ArdController::class,'show']);
 
 
 Route::get('chak',[ChakController::class,'show']);
