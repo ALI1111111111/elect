@@ -58,7 +58,9 @@ return redirect('/ard/val');
     public function show(ard $ard,$id)
     {
         //
-        $val = ard::where('id',$id)->get();
+        // $val = ard::where('id',$id)->get();
+        $val =ard::all();
+        // return "val";
         return view('arduino.show',['values'=> $val]);
     }
 
@@ -80,9 +82,13 @@ return redirect('/ard/val');
      * @param  \App\Models\ard  $ard
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ard $ard)
+    public function update(Request $request, ard $ard,$id)
     {
         //
+               $val = ard::where('id',$id)->get();
+
+        // return $val->value;
+        return view('arduino.show',['values'=> $val]);
     }
 
     /**

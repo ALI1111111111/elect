@@ -37,6 +37,8 @@ Route::get('/ard/val',[ArdController::class,'index']);
 Route::post('/ard/btn',[ArdController::class,'store']);
 
 Route::get('/ard/{id}',[ArdController::class,'show']);
+// Route::get('/get/{id}',[ArdController::class,'update']);
+
 
 
 Route::get('chak',[ChakController::class,'show']);
